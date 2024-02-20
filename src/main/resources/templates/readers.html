@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Читатели</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div style="margin-top: 100px;">
+<table style="width: 1000px; margin: auto; vertical-align: middle">
+    <thead>
+    <th>ID</th>
+    <th>Имя</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    </thead>
+    <tbody th:each="reader : ${readers}">
+    <td th:text="${reader.readerId}"></td>
+    <td th:text="${reader.name}"></td>
+    <td th:text="${reader.email}"></td>
+    <td> <a th:href="@{/borrowed-books/{readerId}(readerId=${reader.readerId})}">Взятые книги</a></td>
+    <td> <a th:href="@{/delete-reader/{readerId}(readerId=${reader.readerId})}">Удалить читателя</a></td>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

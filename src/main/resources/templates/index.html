@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Книги</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div style="margin-top: 100px;">
+    <table style="width: 1000px; margin: auto; vertical-align: middle">
+        <thead>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Жанр</th>
+            <th>Год публикации</th>
+            <th></th>
+        </thead>
+        <tbody th:each="book : ${books}">
+            <td th:text="${book.bookId}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.genre}"></td>
+            <td th:text="${book.publicationYear}"></td>
+            <td> <a th:href="@{/borrow-book/{readerId}/{bookId}(readerId=${readerId},bookId=${book.bookId})}">Одолжить книгу</a></td>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

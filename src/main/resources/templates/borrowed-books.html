@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Читатели</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div style="margin-top: 50px; margin-bottom: 100px">
+    <a th:href="@{/borrow-book/{readerId}(readerId=${readerId})}" class="btn btn-success fixed-button">Взять книгу</a>
+</div>
+
+<table style="width: 1000px; margin: auto; vertical-align: middle">
+    <thead>
+    <th>ID</th>
+    <th>Название</th>
+    <th>Автор</th>
+    <th>Жанр</th>
+    <th>Год публикации</th>
+    <th></th>
+    <th></th>
+    </thead>
+    <tbody th:each="book : ${borrowed_books}">
+    <td th:text="${book.bookId}"></td>
+    <td th:text="${book.title}"></td>
+    <td th:text="${book.author}"></td>
+    <td th:text="${book.genre}"></td>
+    <td th:text="${book.publicationYear}"></td>
+    <td> <a th:href="@{/return-book/{readerId}/{bookId}(readerId=${readerId},bookId=${book.bookId})}">Вернуть книгу</a></td>
+    <td ></td>
+    </tbody>
+</table>
+</body>
+</html>
